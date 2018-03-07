@@ -23,7 +23,6 @@ function logError(error, logType = 'error') {
 /**
  * Wraps an async function (any function that returns a promise) and
  * catches any error that bubble up from it.
- *
  * @param {Function} asyncFunction The async function to wrap
  * @param {Object} options
  * @param {Function} [options.handleError] Will be called when an error occurs.
@@ -32,17 +31,20 @@ function logError(error, logType = 'error') {
  * @returns {Function} asyncFunction wrapped with a the catchAsync
  * functionality
  */
-export default (asyncFunction, { handleError, logType } = {}) => async (
-  ...args
-) => {
-  try {
-    await asyncFunction(...args);
-  } catch (error) {
-    if (isFunction(handleError)) {
-      handleError(error);
-      return;
-    }
+export default function catchAsync(
+  asyncFunction,
+  { handleError, logType } = {}
+) {
+  return async (...args) => {
+    try {
+      await asyncFunction(...args);
+    } catch (error) {
+      if (isFunction(handleError)) {
+        handleError(error);
+        return;
+      }
 
-    logError(error, logType);
-  }
-};
+      logError(error, logType);
+    }
+  };
+}
