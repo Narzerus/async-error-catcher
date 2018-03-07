@@ -11,7 +11,8 @@
     "build": "babel src -d dist",
     "prepublish": "npm run build",
     "test": "jest",
-    "docs": "documentation src/*.js > api.md"
+    "docs":
+      "documentation readme src/index.js -s \"API Documentation\" --github"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

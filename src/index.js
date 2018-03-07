@@ -27,11 +27,13 @@ function logError(error, logType = 'error') {
  * call handleError
  *
  * @export
- * @param {any} asyncFunction
+ * @param {Function} asyncFunction
  * @param {Object} [options]
  * @param {Function} [options.handleError] if this function is provided
  * then catchAsync will call it instead of logging the error
- * @returns {Function} wrapped async function
+ * @param {String} [options.logType='error'] determines what logging method
+ * is used when an error is caught. Can be 'error', 'info', 'log' or 'warn'
+ * @returns {Function} Wrapped async function
  */
 function catchAsync(asyncFunction, { handleError, logType } = {}) {
   return async (...args) => {

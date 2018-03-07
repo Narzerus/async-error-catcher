@@ -11,11 +11,11 @@ functions, basically avoiding the need of using `try/catch` and risking to leave
 
 ### Table of Contents
 
-* [catchAsync](#catchasync)
+-   [catchAsync](#catchasync)
 
 ## catchAsync
 
-[src/index.js:36-49](https://github.com/Narzerus/catch-async/blob/ed3c3e5f988406e009cd1fb3ea42e29b4c8045d5/src/index.js#L36-L49 'Source code on GitHub')
+[src/index.js:38-51](https://github.com/Narzerus/catch-async/blob/98d18bed97ee9fcba985df9e24996d7fc60c602c/src/index.js#L38-L51 "Source code on GitHub")
 
 Returns an async function wrapped in a try catch function. It
 will by default log any error thrown in the async function unless
@@ -24,10 +24,11 @@ call handleError
 
 **Parameters**
 
-* `asyncFunction` **any**
-* `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** (optional, default `{}`)
-  * `options.handleError` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** if this function is provided
-    then catchAsync will call it instead of logging the error
-  * `options.logType`
+-   `asyncFunction` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?**  (optional, default `{}`)
+    -   `options.handleError` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** if this function is provided
+        then catchAsync will call it instead of logging the error
+    -   `options.logType` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** determines what logging method
+        is used when an error is caught. Can be 'error', 'info', 'log' or 'warn' (optional, default `'error'`)
 
-Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** wrapped async function
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Wrapped async function
