@@ -11,7 +11,7 @@
     "build": "babel src -d dist",
     "prepublish": "npm run build",
     "test": "jest",
-    "docs": "jsdoc2md src/*.js > api.md"
+    "docs": "documentation src/*.js > api.md"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -26,7 +26,8 @@
     "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-promise": "^3.6.0",
-    "jest": "^22.4.2"
+    "jest": "^22.4.2",
+    "jsdoc-strip-async-await": "^0.1.0"
   },
   "dependencies": {
     "lodash": "^4.17.5"

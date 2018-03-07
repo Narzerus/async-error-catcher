@@ -2539,6 +2539,10 @@ jsdoc-parse@^3.0.1:
     sort-array "^2.0.0"
     test-value "^3.0.0"
 
+jsdoc-strip-async-await@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/jsdoc-strip-async-await/-/jsdoc-strip-async-await-0.1.0.tgz#7a755a2b7527da2c76e2163a455636183456152a"
+
 jsdoc-to-markdown@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/jsdoc-to-markdown/-/jsdoc-to-markdown-4.0.1.tgz#247f7d977ecc209428972ec92ca14bd4e610355d"

@@ -9,6 +9,7 @@ const LOG_TYPES = ['error', 'warn', 'info'];
  * @param {any} error The error to log
  * @param {string} [logType='error'] Determines what kind of logging
  * method should be used to log the error
+ * @private
  */
 function logError(error, logType = 'error') {
   if (!includes(LOG_TYPES, logType)) {
@@ -27,10 +28,12 @@ function logError(error, logType = 'error') {
  *
  * @export
  * @param {any} asyncFunction
- * @param {any} params
+ * @param {Object} [options]
+ * @param {Function} [options.handleError] if this function is provided
+ * then catchAsync will call it instead of logging the error
  * @returns {Function} wrapped async function
  */
-function catchAsync(asyncFunction, { handleError, logType }) {
+function catchAsync(asyncFunction, { handleError, logType } = {}) {
   return async (...args) => {
     try {
       await asyncFunction(...args);
