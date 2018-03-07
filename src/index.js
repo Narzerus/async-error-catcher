@@ -7,8 +7,8 @@ const LOG_TYPES = ['error', 'warn', 'info'];
 /**
  * Logs error objects to the console
  * @param {Error} error The error to log
- * @param {String} [logType='error'] Logging method to use. Can be 'error', 'log', 'warn'
- * or 'info'
+ * @param {String} [logType='error'] Logging method to use.
+ * Can be 'error', 'log', 'warn' or 'info'
  */
 function logError(error, logType = 'error') {
   if (!includes(LOG_TYPES, logType)) {
