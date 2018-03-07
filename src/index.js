@@ -3,7 +3,7 @@ import includes from 'lodash/includes';
 
 type LogType = 'error' | 'warn' | 'info';
 type CatchAsyncParams = {
-  handleError?: (error: Error) => any,
+  handleError?: (error: Error) => void,
   logType?: LogType,
 };
 
@@ -43,10 +43,10 @@ function logError(error: Error, logType: LogType = 'error') {
  * @returns {Function} Wrapped async function
  */
 function catchAsync(
-  asyncFunction: () => any,
-  { handleError, logType }: CatchAsyncParams
+  asyncFunction: (...args: Array<any>) => Promise<any>,
+  { handleError, logType }: CatchAsyncParams = {}
 ) {
-  return async (...args: any) => {
+  return async (...args: Array<any>) => {
     try {
       await asyncFunction(...args);
     } catch (error) {
