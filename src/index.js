@@ -1,8 +1,14 @@
 // @flow
-import isFunction from 'lodash/isFunction';
 import includes from 'lodash/includes';
 
-const LOG_TYPES = ['error', 'warn', 'info'];
+type LogType = 'error' | 'warn' | 'info';
+type CatchAsyncParams = {
+  handleError?: (error: Error) => any,
+  logType?: LogType,
+};
+
+const LOG_TYPES: Array<LogType> = ['error', 'warn', 'info'];
+
 /**
  * Logs an error to the console
  *
@@ -11,7 +17,7 @@ const LOG_TYPES = ['error', 'warn', 'info'];
  * method should be used to log the error
  * @private
  */
-function logError(error, logType = 'error') {
+function logError(error: Error, logType: LogType = 'error') {
   if (!includes(LOG_TYPES, logType)) {
     throw new Error(
       `catch-async: Error type provided "${logType}" is not valid`
@@ -20,6 +26,7 @@ function logError(error, logType = 'error') {
   // eslint-disable-next-line no-console
   console.error(error);
 }
+
 /**
  * Returns an async function wrapped in a try catch function. It
  * will by default log any error thrown in the async function unless
@@ -35,12 +42,15 @@ function logError(error, logType = 'error') {
  * is used when an error is caught. Can be 'error', 'info', 'log' or 'warn'
  * @returns {Function} Wrapped async function
  */
-function catchAsync(asyncFunction, { handleError, logType } = {}) {
-  return async (...args) => {
+function catchAsync(
+  asyncFunction: () => any,
+  { handleError, logType }: CatchAsyncParams
+) {
+  return async (...args: any) => {
     try {
       await asyncFunction(...args);
     } catch (error) {
-      if (isFunction(handleError)) {
+      if (typeof handleError === 'function') {
         handleError(error);
         return;
       }

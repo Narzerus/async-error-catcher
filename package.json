@@ -1,8 +1,7 @@
 {
   "name": "catch-async",
   "version": "1.0.0",
-  "description":
-    "Utility used to wrap root async functions to avoid uncaught promise errors",
+  "description": "Utility used to wrap root async functions to avoid uncaught promise errors",
   "repository": "https://github.com/Narzerus/catch-async.git",
   "author": "Rafael Vidaurre <narzerus@gmail.com>",
   "license": "MIT",
@@ -11,16 +10,17 @@
     "build": "babel src -d dist",
     "prepublish": "npm run build",
     "test": "jest",
-    "docs":
-      "documentation readme src/index.js -s \"API Documentation\" --github"
+    "docs": "documentation readme src/index.js -s \"API Documentation\" --github"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.1",
     "babel-plugin-module-resolver": "^3.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -31,6 +31,7 @@
     "jsdoc-strip-async-await": "^0.1.0"
   },
   "dependencies": {
+    "flow-bin": "^0.66.0",
     "lodash": "^4.17.5"
   }
 }
